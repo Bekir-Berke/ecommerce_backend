@@ -9,6 +9,10 @@ const productSchema = mongoose.Schema(
             type:String,
             required:[true, 'product name is required']
         },
+        brandName:{
+            type:String,
+            required:[true, 'brand name is required']
+        },
         categoryName:{
             type:String,
             required:[true, 'category name is required']
@@ -29,7 +33,8 @@ const productSchema = mongoose.Schema(
         },
         seller:{
             type:mongoose.Schema.Types.ObjectId,
-            ref:'User'
+            ref:'User',
+            required:true
         }
     },
     {
