@@ -7,7 +7,13 @@ class ProductService{
         return await Product.find({});
     }
     async getProductById(id){
-        return await Product.find({_id:id});
+        return await Product.findById({_id:id});
+    }
+    async getCategories(){
+        return await Product.find({}).distinct('categoryName');
+    }
+    async getProductsByCategoryName(categoryName){
+        return await Product.find({categoryName:categoryName});
     }
 }
 module.exports = ProductService;

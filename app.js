@@ -12,6 +12,7 @@ const options = {
 };
 app.use(express.json());
 app.use(cookieParser());
+app.disable('x-powered-by');
 app.use(cors());
 app.use(router);
 mongoose.connect(process.env.dbURI, options)

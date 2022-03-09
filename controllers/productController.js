@@ -26,3 +26,22 @@ module.exports.getProductsById = async(req, res) => {
         res.status(400).json({error:error});
     }
 };
+
+module.exports.getCategories = async(req, res) => {
+    try {
+        const categories = await productService.getCategories();
+        res.status(200).json({categories:categories});
+    } catch (error){
+        res.status(400).json({error:error});
+    }
+};
+
+module.exports.getProductsByCategoryName = async(req, res) => {
+    const categoryName = req.params.categoryName;
+    try {
+        const products = await productService.getProductsByCategoryName(categoryName);
+        res.status(200).json({products:products});
+    } catch (error){
+        res.status(400).json({error:error});
+    }
+};
