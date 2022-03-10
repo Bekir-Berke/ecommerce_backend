@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
-const maxAge = 3 * 24 * 60 * 60;
 const createToken = (id, name, isAdmin) => {
-    return jwt.sign({id, name, isAdmin}, `${process.env.TOKEN_SECRET}`,{expiresIn:maxAge});
+    return jwt.sign({id, name, isAdmin}, `${process.env.TOKEN_SECRET}`);
 };
 const checkAuth = (req, res, next) => {
     const token = req.headers.authorization.split(' ')[1];

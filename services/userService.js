@@ -6,5 +6,8 @@ class UserService{
     async login(email, password){
         return await User.login(email, password);
     }
+    async getUserData(id){
+        return await User.findById({_id:id});
+    }
 }
 module.exports = UserService;
