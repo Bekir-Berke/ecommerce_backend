@@ -32,4 +32,13 @@ module.exports.getUserData = async(req, res) => {
     } catch (error){
         res.status(400).json({error:error});
     }
+};
+module.exports.deleteUser = async(req, res) => {
+    const {id} = req.body;
+    try {
+        const user = await userService.deleteUser(id);
+        res.status(200).json({message:'deleted'});
+    } catch (error){
+        res.status(400).json({error:error});
+    }
 }; 

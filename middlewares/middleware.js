@@ -16,7 +16,7 @@ const checkAdmin = (req, res, next) => {
     const token = req.headers.authorization.split(' ')[1];
     const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
     req.userData = decodedToken;
-    if(req.userData.isAdmin == true){
+    if(req.userData.isAdmin){
         next();
     }else{
         res.status(401).json({message:'You dont have permission'});
