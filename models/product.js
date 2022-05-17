@@ -1,4 +1,14 @@
 const mongoose = require('mongoose');
+const reviewSchema = mongoose.Schema({
+    postedBy:{
+        type:String
+    },
+    comment:{
+        type:String
+    }
+},{
+    timestamps:true
+});
 const productSchema = mongoose.Schema(
     {
         productName:{
@@ -27,11 +37,7 @@ const productSchema = mongoose.Schema(
             required:[true, 'units in stock is required'],
             default:0
         },
-        seller:{
-            type:mongoose.Schema.Types.ObjectId,
-            ref:'User',
-            required:true
-        }
+        reviews:[reviewSchema]
     },
     {
         timestamps:true

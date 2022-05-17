@@ -2,6 +2,9 @@ const jwt = require('jsonwebtoken');
 const createToken = (id, name, isAdmin) => {
     return jwt.sign({id, name, isAdmin}, `${process.env.TOKEN_SECRET}`);
 };
+const decodeToken = (token) => {
+    return jwt.verify(token, process.env.TOKEN_SECRET);
+};
 const checkAuth = (req, res, next) => {
     const token = req.headers.authorization.split(' ')[1];
     const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
@@ -22,4 +25,4 @@ const checkAdmin = (req, res, next) => {
         res.status(401).json({message:'You dont have permission'});
     }
 };
-module.exports = {createToken, checkAuth, checkAdmin};
+module.exports = {createToken, decodeToken, checkAuth, checkAdmin};

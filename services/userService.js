@@ -12,5 +12,8 @@ class UserService{
     async deleteUser(id){
         return await User.findOneAndDelete({_id:id});
     }
+    async updateUser(id, name, email){
+        return await User.findByIdAndUpdate(id, {$set:{name:name, email:email}});
+    }
 }
 module.exports = UserService;
