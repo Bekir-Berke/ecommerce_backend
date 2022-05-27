@@ -35,12 +35,12 @@ module.exports.getCategories = async(req, res) => {
 //         res.status(400).json({error:error});
 //     }
 // };
-// module.exports.deleteCategory = async(req, res) => {
-//     const id = req.params.id;
-//     try {
-//         const category = await categoryService.deleteCategory(id);
-//         res.status(200).json({category:category});
-//     } catch (error){
-//         res.status(400).json({error:error});
-//     }
-// };
+module.exports.deleteCategory = async(req, res) => {
+    const id = req.params.id;
+    try{
+        const category = await categoryService.deleteCategory(id);
+        res.status(200).json({category:category});
+    }catch (error){
+        res.status(400).json({error:error});
+    }
+};

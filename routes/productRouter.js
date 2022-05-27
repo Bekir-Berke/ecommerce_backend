@@ -1,12 +1,12 @@
 const{Router} = require('express');
-const multer = require('multer');
+// const multer = require('multer');
 const {addProduct, getProducts, getProductsById, getCategories, getProductsByCategoryName, deleteProduct, addProductComment, updateProduct} = require('../controllers/productController');
 const {checkAdmin, checkAuth} = require('../middlewares/middleware');
 const productRouter = Router();
-let storage = multer.memoryStorage();
-let upload = multer({storage:storage});
+// let storage = multer.memoryStorage();
+// let upload = multer({storage:storage});
 
-productRouter.post('/add', checkAdmin, upload.single('product_image'), addProduct);
+productRouter.post('/add', checkAdmin, addProduct);
 productRouter.get('/getall', getProducts);
 productRouter.get('/:categoryName', getProductsByCategoryName);
 productRouter.get('/categories', getCategories);

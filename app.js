@@ -1,6 +1,6 @@
 const express = require('express');
-const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
+const fileUpload = require('express-fileupload');
 const productRouter = require('./routes/productRouter');
 const userRouter = require('./routes/userRouter');
 const cors = require('cors');
@@ -12,8 +12,8 @@ const options = {
     useNewUrlParser:true,
     useUnifiedTopology:true
 };
-app.use(express.json());
-app.use(cookieParser());
+app.use(express.json({extended:true}));
+app.use(fileUpload());
 app.disable('x-powered-by');
 app.use(cors());
 app.use('/api/products', productRouter);

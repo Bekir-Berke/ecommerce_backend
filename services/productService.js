@@ -1,13 +1,17 @@
 const Product = require('../models/product');
 class ProductService{
-    async addProduct(productName, brandName, categoryName, description, unitPrice, unitsInStock){
+    async addProduct(productName, brandName, categoryName, description, unitPrice, unitsInStock, image){
         return await Product.create({
             productName:productName,
             brandName:brandName,
             categoryName:categoryName,
             description:description,
             unitPrice:unitPrice,
-            unitsInStock:unitsInStock
+            unitsInStock:unitsInStock,
+            image:{
+                data:image.data,
+                contentType:image.mimetype
+            }
         });
     }
     async getProducts(){

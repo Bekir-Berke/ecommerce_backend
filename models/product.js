@@ -37,6 +37,10 @@ const productSchema = mongoose.Schema(
             required:[true, 'units in stock is required'],
             default:0
         },
+        image:{
+            data:Buffer,
+            contentType:String
+        },
         reviews:[reviewSchema]
     },
     {

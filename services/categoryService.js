@@ -1,7 +1,10 @@
 const Category = require('../models/category');
 class CategoryService{
     async addCategory(categoryId, categoryName){
-        return await Category.create({categoryId, categoryName});
+        return await Category.create({
+            categoryId: categoryId,
+            categoryName: categoryName
+        });
     }
     async getCategories(){
         return await Category.find({});
@@ -12,8 +15,8 @@ class CategoryService{
     // async getCategoryByName(name){
     //     return await Category.findOne({categoryName:name});
     // }
-    // async deleteCategory(id){
-    //     return await Category.findByIdAndDelete(id);
-    // }
+    async deleteCategory(id){
+        return await Category.findByIdAndDelete(id);
+    }
 }
 module.exports = CategoryService;
